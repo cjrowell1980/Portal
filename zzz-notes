@@ -1,0 +1,7 @@
+php artisan make:model <<name>> -mcr --requests (make controller with with functions, model, requests, migrations)
+
+create views
+
+
+update seeders
+    add role for models
