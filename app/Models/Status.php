@@ -14,6 +14,7 @@ class Status extends Model
         'name',
         'description',
         'order',
+        'colour',
     ];
 
 }

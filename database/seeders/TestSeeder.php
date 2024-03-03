@@ -44,5 +44,15 @@ class TestSeeder extends Seeder
             'engineer'      => $engineer->id,
             'status'        => true,
         ]);
+        $job = Jobs::create([
+            'machine'   => $machine->id,
+            'number'    => rand(10000, 99999),
+            'fault'     => 'its proper fixed!',
+            'address'   => 'somewhere',
+            'contactName'   => 'someone',
+            'contactNo'     => '01480 891 251',
+            'engineer'      => $engineer->id,
+            'status'        => false,
+        ]);
     }
 }

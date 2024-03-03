@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->integer('order')->default('0');
+            $table->string('colour');
 
             $table->timestamps();
         });

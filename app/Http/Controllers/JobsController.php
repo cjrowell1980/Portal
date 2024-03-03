@@ -20,7 +20,8 @@ class JobsController extends Controller
     public function index(): View
     {
         return view('jobs.index', [
-            'jobs'  => Jobs::latest()->paginate(env('APP_PAGE_FULL')),
+//            'jobs'  => Jobs::latest()->paginate(env('APP_PAGE_FULL')),
+            'jobs'   => Jobs::where('status', 1)->orderBy('created_at', 'DESC')->paginate(env('APP_PAGE_FULL')), 
         ]);
     }
 

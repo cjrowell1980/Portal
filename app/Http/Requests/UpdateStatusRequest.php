@@ -25,6 +25,8 @@ class UpdateStatusRequest extends FormRequest
             'parent'        => 'required|integer',
             'name'          => 'required|string|max:250',
             'description'   => 'required|string',
+            'order'         => 'required|integer',
+            'colour'        => 'required',
         ];
     }
 }

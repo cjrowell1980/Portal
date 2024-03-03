@@ -13,9 +13,9 @@
             <thead>
                 <tr>
                 <th scope="col" width="50px">#</th>
-                <th scope="col">Job</th>
-                <th scope="col">Stock</th>
+                <th scope="col">Job No#</th>
                 <th scope="col">Machine</th>
+                <th scope="col">Fault</th>
                 <th scope="col" colspan="2">Status</th>
                 <th scope="col" width="220px">Action</th>
                 </tr>
@@ -25,10 +25,10 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $row->number }}</td>
-                    <td>{{ $row->getMachine->stock }}</td>
-                    <td>{{ $row->getMachine->make . ' ' . $row->getMachine->model }}</td>
-                    <td>other</td>
-                    <td>open</td>
+                    <td>{{ $row->getMachine->stock . " - " . $row->getMachine->make . ' ' . $row->getMachine->model }}</td>
+                    <td>{{ $row->fault }}</td>
+                    <td>SubStatuses</td>
+                    <td>SubStatuses</td>
                     <td class="float-center">
                         <form action="{{ route('jobs.destroy', $row->id) }}" method="post">
                             @csrf

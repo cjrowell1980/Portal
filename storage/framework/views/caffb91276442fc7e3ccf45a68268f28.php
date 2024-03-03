@@ -9,9 +9,9 @@
             <thead>
                 <tr>
                 <th scope="col" width="50px">#</th>
-                <th scope="col">Job</th>
-                <th scope="col">Stock</th>
+                <th scope="col">Job No#</th>
                 <th scope="col">Machine</th>
+                <th scope="col">Fault</th>
                 <th scope="col" colspan="2">Status</th>
                 <th scope="col" width="220px">Action</th>
                 </tr>
@@ -21,10 +21,10 @@
                 <tr>
                     <th scope="row"><?php echo e($loop->iteration); ?></th>
                     <td><?php echo e($row->number); ?></td>
-                    <td><?php echo e($row->getMachine->stock); ?></td>
-                    <td><?php echo e($row->getMachine->make . ' ' . $row->getMachine->model); ?></td>
-                    <td>other</td>
-                    <td>open</td>
+                    <td><?php echo e($row->getMachine->stock . " - " . $row->getMachine->make . ' ' . $row->getMachine->model); ?></td>
+                    <td><?php echo e($row->fault); ?></td>
+                    <td>SubStatuses</td>
+                    <td>SubStatuses</td>
                     <td class="float-center">
                         <form action="<?php echo e(route('jobs.destroy', $row->id)); ?>" method="post">
                             <?php echo csrf_field(); ?>

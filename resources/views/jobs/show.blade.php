@@ -61,10 +61,10 @@
                     <div class="row">
                         <label for="status" class="col-md-4 col-form-label text-md-end text-start"><strong>Statuses:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            <span class="badge rounded-pill bg-info">Jobsheet Pending</span> 
-                            <span class="badge rounded-pill bg-info">Invoice Pending</span> 
-                            <span class="badge rounded-pill bg-info">Pictures Pending</span> 
-                            <span class="badge rounded-pill bg-info">Warranty Pending</span>
+                            <span class="badge rounded-pill bg-info w-23">Jobsheet Pending</span>
+                            <span class="badge rounded-pill bg-info w-23">Invoice Pending</span>
+                            <span class="badge rounded-pill bg-info w-23">Pictures Pending</span>
+                            <span class="badge rounded-pill bg-info w-23">Warranty Pending</span>
                         </div>
                     </div>
 
