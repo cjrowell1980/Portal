@@ -75,9 +75,10 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th scope="col" width="1%">#</th>
-                        <th scope="col" width="1%">Id</th>
-                        <th scope="col">Make</th>
-                        <th scope="col">Model</th>
+                        <th scope="col" width="100px">Job No#</th>
+                        <th scope="col" width="100px" class="text-center">Status</th>
+                        <th scope="col">Fault</th>
+                        <th scope="col" width="75px" class="text-center">Days</th>
                         <th scope="col" width="250px">Action</th>
                     </thead>
                     <tbody>
@@ -85,19 +86,34 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $row->number }}</td>
-                                <td>{{ $row->created_at }}</td>
+                                <td class="text-center">
+                                    @if ($row->status)
+                                        <span class='badge rounded-pill bg-warning w-75'>Open</span>
+                                    @else
+                                        <span class='badge rounded-pill bg-success w-75'>Closed</span>                                    
+                                    @endif
+                                </td>
                                 <td>{{ $row->fault }}</td>
+                                <td class="text-center">
+                                    @if ($row->status == 0) {{-- Job Closed --}}
+                                        {{ $row->updated_at->diffInDays($row->created_at) }}
+                                    @else {{-- Job Open --}}
+                                        {{ now()->diffInDays($row->created_at)}}
+                                    @endif
+                                </td>
                                 <td>
                                     <form action="{{ route('jobs.destroy', $row->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <a href="{{ route('jobs.show', $row->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
-                                        @can('edit-jobs')
-                                            <a href="{{ route('jobs.edit', $row->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
-                                        @endcan
-                                        @can('delete-jobs')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this machine?');"><i class="bi bi-trash"></i> Delete</button>
-                                        @endcan
+                                        @if ($row->status == 1)
+                                            @can('edit-jobs')
+                                                <a href="{{ route('jobs.edit', $row->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                                
+                                            @endcan
+                                            @can('delete-jobs')
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this machine?');"><i class="bi bi-trash"></i> Delete</button>
+                                            @endcan
+                                        @endif
                                     </form>
                                 </td>
                             </tr>

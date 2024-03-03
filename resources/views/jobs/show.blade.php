@@ -15,12 +15,14 @@
                         @csrf
                         @method('DELETE')
                         <a href="{{ route('machines.show', $job->getMachine->id) }}" class="btn btn-primary btn-sm">&larr; Back</a>
-                        @can('edit-jobs')
-                            <a href="{{ route('customers.edit', $job->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
-                        @endcan
-                        @can('delete-jobs')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this job?');"><i class="bi bi-trash"></i> Delete
-                        @endcan
+                        @if ($job->status == 1)
+                            @can('edit-jobs')
+                                <a href="{{ route('customers.edit', $job->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                
+                            @endcan
+                            @can('delete-jobs')
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this job?');"><i class="bi bi-trash"></i> Delete
+                            @endcan
+                        @endif
                     </form>
                 </div>
             </div>
@@ -59,6 +61,20 @@
                     </div>
 
                     <div class="row">
+                        <label for="fault" class="col-md-4 col-form-label text-md-end text-start"><strong>Date Reported:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $job->created_at->format('d M Y') }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="fault" class="col-md-4 col-form-label text-md-end text-start"><strong>{{ ($job->status == 0) ? "Date Closed" : "Days Open"}}:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ ($job->status == 0) ? $job->updated_at->format('d M Y') . " (" . $job->updated_at->diffInDays($job->created_at) . "days)" : now()->diffInDays($job->created_at) }}
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <label for="status" class="col-md-4 col-form-label text-md-end text-start"><strong>Statuses:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             <span class="badge rounded-pill bg-info w-23">Jobsheet Pending</span>
@@ -68,6 +84,62 @@
                         </div>
                     </div>
 
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <div class="float-start">
+                    Visits
+                </div>
+                <div class="float-end">
+                    <a href="#" class="btn btn-sm btn-success">Add Job</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <th scope="col" width="1%">#</th>
+                        <th scope="col" width="100px">Opened</th>
+                        <th scope="col" width="100px">Scheduled</th>
+                        <th scope="col">Engineer</th>
+                        <th scope="col" width="75px" class="text-center">Days</th>
+                        <th scope="col" width="250px">Action</th>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>01 Mar 24</td>
+                                <td>04 Mar 24</td>
+                                <td>ChrisR</td>
+                                <td><span class="badge rounded-pill bg-warning w-75">Open</span></td>
+                                <td>
+                                    <form action="#" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
+                                        @if (1 == true)
+                                            @can('edit-jobs')
+                                                <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                                
+                                            @endcan
+                                            @can('delete-jobs')
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this machine?');"><i class="bi bi-trash"></i> Delete</button>
+                                            @endcan
+                                        @endif
+                                    </form>
+                                </td>
+                            </tr>
+                        <!-- empty -->
+                        <td colspan="6">
+                            <span class="text-danger text-center fw-bold">
+                                <p>No Visits Found!</p>
+                            </span>
+                        </td>
+
+
+
+                    </tbody>
+                </table>
             </div>
         </div>
 

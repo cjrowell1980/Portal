@@ -78,9 +78,10 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th scope="col" width="1%">#</th>
-                        <th scope="col" width="1%">Id</th>
-                        <th scope="col">Make</th>
-                        <th scope="col">Model</th>
+                        <th scope="col" width="100px">Job No#</th>
+                        <th scope="col" width="100px" class="text-center">Status</th>
+                        <th scope="col">Fault</th>
+                        <th scope="col" width="75px" class="text-center">Days</th>
                         <th scope="col" width="250px">Action</th>
                     </thead>
                     <tbody>
@@ -88,18 +89,35 @@
                             <tr>
                                 <td><?php echo e($loop->iteration); ?></td>
                                 <td><?php echo e($row->number); ?></td>
-                                <td><?php echo e($row->created_at); ?></td>
+                                <td class="text-center">
+                                    <?php if($row->status): ?>
+                                        <span class='badge rounded-pill bg-warning w-75'>Open</span>
+                                    <?php else: ?>
+                                        <span class='badge rounded-pill bg-success w-75'>Closed</span>                                    
+                                    <?php endif; ?>
+                                </td>
                                 <td><?php echo e($row->fault); ?></td>
+                                <td class="text-center">
+                                    <?php if($row->status == 0): ?> 
+                                        <?php echo e($row->updated_at->diffInDays($row->created_at)); ?>
+
+                                    <?php else: ?> 
+                                        <?php echo e(now()->diffInDays($row->created_at)); ?>
+
+                                    <?php endif; ?>
+                                </td>
                                 <td>
                                     <form action="<?php echo e(route('jobs.destroy', $row->id)); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>
                                         <a href="<?php echo e(route('jobs.show', $row->id)); ?>" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
-                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-jobs')): ?>
-                                            <a href="<?php echo e(route('jobs.edit', $row->id)); ?>" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
-                                        <?php endif; ?>
-                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete-jobs')): ?>
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this machine?');"><i class="bi bi-trash"></i> Delete</button>
+                                        <?php if($row->status == 1): ?>
+                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-jobs')): ?>
+                                                <a href="<?php echo e(route('jobs.edit', $row->id)); ?>" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                                
+                                            <?php endif; ?>
+                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete-jobs')): ?>
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this machine?');"><i class="bi bi-trash"></i> Delete</button>
+                                            <?php endif; ?>
                                         <?php endif; ?>
                                     </form>
                                 </td>

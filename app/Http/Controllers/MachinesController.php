@@ -6,7 +6,6 @@ use App\Models\Machines;
 use App\Models\Customers;
 use App\Http\Requests\StoreMachinesRequest;
 use App\Http\Requests\UpdateMachinesRequest;
-use App\Models\Jobs;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;

@@ -26,7 +26,7 @@ class Machines extends Model
 
     public function getJobs()
     {
-        return $this->hasMany(Jobs::class, 'machine');
+        return $this->hasMany(Jobs::class, 'machine')->orderBy('status', 'DESC');
     }
 
 }

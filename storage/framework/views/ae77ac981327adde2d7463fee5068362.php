@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Simple Laravel 10 User Roles and Permissions - AllPHPTricks.com</title>
+    <title><?php echo e(__("Service Portal")); ?></title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
