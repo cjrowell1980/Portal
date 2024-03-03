@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">Job Status List</div>
+    <div class="card-header">Status Lists</div>
     <div class="card-body">
         @can('create-status')
             <a href="{{ route('status.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New status</a>
@@ -12,10 +12,10 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Jobsheet Statuses
+                        Jobsheet Statuses (in display order)
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionStatus">
                     <div class="accordion-body">
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -62,10 +62,10 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Photo Statuses
+                        Photo Statuses (in display order)
                     </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionStatus">
                     <div class="accordion-body">
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -112,10 +112,10 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Incoming Invoice Statuses
+                        Incoming Invoice Statuses (in display order)
                     </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionStatus">
                     <div class="accordion-body">
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -162,10 +162,10 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFour">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        Outgoing Invoice/Claim Statuses
+                        Outgoing Invoice / Warranty Claim Statuses (in display order)
                     </button>
                 </h2>
-                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionStatus">
                     <div class="accordion-body">
                         <table class="table table-striped table-bordered">
                             <thead>

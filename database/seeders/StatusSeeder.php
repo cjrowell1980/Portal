@@ -20,13 +20,6 @@ class StatusSeeder extends Seeder
             'order'         => 0,
             'colour'        => 'info',
         ]);
-        $status_0B = Status::create([
-            'parent'        => '0',
-            'name'          => 'Incoming Invoice',
-            'description'   => 'status of invoice reciept',
-            'order'         => 1,
-            'colour'        => 'info',
-        ]);
         $status_0C = Status::create([
             'parent'        => '0',
             'name'          => 'Photos',
@@ -34,10 +27,17 @@ class StatusSeeder extends Seeder
             'order'         => 0,
             'colour'        => 'info',
         ]);
+        $status_0B = Status::create([
+            'parent'        => '0',
+            'name'          => 'Incoming Invoice',
+            'description'   => 'status of invoice reciept',
+            'order'         => 1,
+            'colour'        => 'info',
+        ]);
         $status_0D = Status::create([
             'parent'        => '0',
             'name'          => 'Outgoing Invoice',
-            'description'   => 'status of APS invoice or claim',
+            'description'   => 'status of APS invoice or Warranty claim',
             'order'         => 0,
             'colour'        => 'info',
         ]);
@@ -58,7 +58,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'parent'        => $status_0A->id,
             'name'          => 'Overdue',
-            'description'   => 'job sheet has been recieved',
+            'description'   => 'job sheet has been requested and is now overdue',
             'order'         => 2,
             'colour'        => 'danger',
         ]);

@@ -26,7 +26,7 @@ class StoreStatusRequest extends FormRequest
             'order'         => 'required|integer',
             'name'          => 'required|string|max:250',
             'description'   => 'required|string',
-            'color'         => 'required',
+            'colour'         => 'required',
         ];
     }
 }

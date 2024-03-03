@@ -5,3 +5,23 @@
 .w-23 {
     width: 23% !important;
 }
+
+// Coloured Select Box for badges
+select option[value="primary"] {
+    background:rgba(39,128,227,0.3);
+}
+select option[value="secondary"] {
+    background:rgba(55,58,60,0.3);
+}
+select option[value="success"] {
+    background:rgba(63,182,24,0.3);
+}
+select option[value="info"] {
+    background:rgba(153,84,187,0.3);
+}
+select option[value="warning"] {
+    background:rgba(255,117,24,0.3);
+}
+select option[value="danger"] {
+    background:rgba(255,0,57,0.3);
+}

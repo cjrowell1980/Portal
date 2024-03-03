@@ -17,7 +17,7 @@
                 <th scope="col">Machine</th>
                 <th scope="col">Fault</th>
                 <th scope="col" colspan="2">Status</th>
-                <th scope="col" width="220px">Action</th>
+                <th scope="col" width="250px">Action</th>
                 </tr>
             </thead>
             <tbody>

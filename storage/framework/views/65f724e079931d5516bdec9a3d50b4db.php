@@ -18,6 +18,24 @@
                     <div class="row">
                         <label for="parent" class="col-md-4 col-form-label text-md-end text-start"><strong>Parent:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
+                            <?php switch($status->parent):
+
+                                case ("1"): ?>
+                                    Jobsheet Status
+                                    <?php break; ?>
+
+                                    <?php case ("2"): ?>
+                                        Photo Status
+                                        <?php break; ?>
+
+                                    <?php case ("3"): ?>
+                                        Incoming Invoice Status
+                                        <?php break; ?>
+
+                                    <?php case ("4"): ?>
+                                        Outgoing Invoice / Warranty Claim Status
+                                        <?php break; ?>
+                            <?php endswitch; ?>
                             <?php echo e(($status->parent == '1') ? __("Primary") : __("Secondary")); ?>
 
                         </div>
@@ -43,6 +61,14 @@
                         <label for="description" class="col-md-4 col-form-label text-md-end text-start"><strong>Description:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             <?php echo e($status->description); ?>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="colour" class="col-md-4 col-form-label text-md-end text-start"><strong>Colour:</strong></label>
+                        <div class="col-md-6 bg-<?php echo e($status->colour); ?> text-white text-center" style="line-height: 35px;">
+                            <?php echo e($status->colour); ?>
 
                         </div>
                     </div>

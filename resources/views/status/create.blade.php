@@ -19,11 +19,13 @@
                     @csrf
 
                     <div class="mb-3 row">
-                        <label for="parent" class="col-md-4 col-form-label text-md-end text-start">Type</label>
+                        <label for="parent" class="col-md-4 col-form-label text-md-end text-start">Status Category</label>
                         <div class="col-md-6">
                             <select name="parent" id="parent" class="form-select @error('parent') is-invalid @enderror">
-                                <option value="1">Primary</option>
-                                <option value="2">Secondary</option>
+                                <option value="1">Jobsheets</option>
+                                <option value="2">Photos</option>
+                                <option value="3">Incoming Invoices</option>
+                                <option value="4">Outgoing Invoices</option>
                             </select>
                             @if ($errors->has('parent'))
                                 <span class="text-danger">{{ $errors->first('parent') }}</span>
@@ -60,7 +62,34 @@
                             @endif
                         </div>
                     </div>
-
+                    
+                    <div class="mb-3 row">
+                        <label for="parent" class="col-md-4 col-form-label text-md-end text-start">Status Colour</label>
+                        <div class="col-md-6 ">
+                            <select name="colour" id="colour" class="form-control">
+                                <option value="primary">Primary</option>
+                                <option value="secondary">Secondary</option>
+                                <option value="success">Success</option>
+                                <option value="info">Info</option>
+                                <option value="warning">Warning</option>
+                                <option value="danger">Danger</option>
+                            </select>
+                            @if ($errors->has('parent'))
+                                <span class="text-danger">{{ $errors->first('parent') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <span class="badge bg-primary col-md-2">Primary</span>
+                        <span class="badge bg-secondary col-md-2">Secondary</span>
+                        <span class="badge bg-success col-md-2">Success</span>
+                        <span class="badge bg-info col-md-2">Info</span>
+                        <span class="badge bg-warning col-md-2">Warning</span>
+                        <span class="badge bg-danger col-md-2">Danger</span>
+                        
+                    </div>
+                     
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Status">
                     </div>

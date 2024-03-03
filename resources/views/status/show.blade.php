@@ -20,6 +20,24 @@
                     <div class="row">
                         <label for="parent" class="col-md-4 col-form-label text-md-end text-start"><strong>Parent:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
+                            @switch($status->parent)
+
+                                @case("1")
+                                    Jobsheet Status
+                                    @break
+
+                                    @case("2")
+                                        Photo Status
+                                        @break
+
+                                    @case("3")
+                                        Incoming Invoice Status
+                                        @break
+
+                                    @case("4")
+                                        Outgoing Invoice / Warranty Claim Status
+                                        @break
+                            @endswitch
                             {{ ($status->parent == '1') ? __("Primary") : __("Secondary") }}
                         </div>
                     </div>
@@ -42,6 +60,13 @@
                         <label for="description" class="col-md-4 col-form-label text-md-end text-start"><strong>Description:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $status->description }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="colour" class="col-md-4 col-form-label text-md-end text-start"><strong>Colour:</strong></label>
+                        <div class="col-md-6 bg-{{$status->colour}} text-white text-center" style="line-height: 35px;">
+                            {{ $status->colour }}
                         </div>
                     </div>
 
