@@ -35,14 +35,14 @@
                             {{ $machine->stock }}
                         </div>
                     </div>
-
-                    <div class="row">
-                        <label for="order" class="col-md-4 col-form-label text-md-end text-start"><strong>Fleet Ref:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            {{ $machine->asset }}
+                    @empty(!$machine->asset)
+                        <div class="row">
+                            <label for="order" class="col-md-4 col-form-label text-md-end text-start"><strong>Fleet Ref:</strong></label>
+                            <div class="col-md-6" style="line-height: 35px;">
+                                {{ $machine->asset }}
+                            </div>
                         </div>
-                    </div>
-
+                    @endempty
                     <div class="row">
                         <label for="order" class="col-md-4 col-form-label text-md-end text-start"><strong>Serial Number:</strong></label>
                         <div class="col-md-6 text-uppercase" style="line-height: 35px;">
@@ -78,7 +78,7 @@
                         <th scope="col" width="1%">Id</th>
                         <th scope="col">Make</th>
                         <th scope="col">Model</th>
-                        <th scope="col" width="217px">Action</th>
+                        <th scope="col" width="250px">Action</th>
                     </thead>
                     <tbody>
                         @forelse ($machine->getJobs as $row )
@@ -91,9 +91,9 @@
                                     <form action="{{ route('jobs.destroy', $row->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="{{ route('customers.show', $row->id) }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                                        <a href="{{ route('jobs.show', $row->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
                                         @can('edit-jobs')
-                                            <a href="{{ route('machines.edit', $row->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
+                                            <a href="{{ route('jobs.edit', $row->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
                                         @endcan
                                         @can('delete-jobs')
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this machine?');"><i class="bi bi-trash"></i> Delete</button>

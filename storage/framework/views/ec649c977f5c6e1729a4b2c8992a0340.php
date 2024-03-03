@@ -35,9 +35,8 @@
 
                         </div>
                     </div>
-
                     <?php if(empty(!$machine->asset)): ?>
-                       <div class="row">
+                        <div class="row">
                             <label for="order" class="col-md-4 col-form-label text-md-end text-start"><strong>Fleet Ref:</strong></label>
                             <div class="col-md-6" style="line-height: 35px;">
                                 <?php echo e($machine->asset); ?>
@@ -45,8 +44,6 @@
                             </div>
                         </div>
                     <?php endif; ?>
-
-
                     <div class="row">
                         <label for="order" class="col-md-4 col-form-label text-md-end text-start"><strong>Serial Number:</strong></label>
                         <div class="col-md-6 text-uppercase" style="line-height: 35px;">
@@ -81,11 +78,9 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th scope="col" width="1%">#</th>
-                        <th scope="col" width="100px">Job No#</th>
-                        <th scope="col">Fault</th>
-                        <th scope="col" width="150px">Engineer</th>
-                        <th scope="col" width="100px" class="text-center">Days Open</th>
-                        <th scope="col" width="150px" class="text-center" colspan="2">Status</th>
+                        <th scope="col" width="1%">Id</th>
+                        <th scope="col">Make</th>
+                        <th scope="col">Model</th>
                         <th scope="col" width="250px">Action</th>
                     </thead>
                     <tbody>
@@ -93,11 +88,8 @@
                             <tr>
                                 <td><?php echo e($loop->iteration); ?></td>
                                 <td><?php echo e($row->number); ?></td>
+                                <td><?php echo e($row->created_at); ?></td>
                                 <td><?php echo e($row->fault); ?></td>
-                                <td><?php echo e($row->getEngineer->name); ?></td>
-                                <td class="text-center"><?php echo e(now()->diffInDays($row->created_at)); ?></td>
-                                <td class="text-center" width="75px"><span class="badge rounded-pill bg-warning">Open</span></td>
-                                <td class="text-center" width="75px"><span class="badge rounded-pill bg-info">Initial Visit</span></td>
                                 <td>
                                     <form action="<?php echo e(route('jobs.destroy', $row->id)); ?>" method="POST">
                                         <?php echo csrf_field(); ?>

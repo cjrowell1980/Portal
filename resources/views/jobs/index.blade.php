@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">Machine List</div>
+    <div class="card-header">Open Jobs</div>
     <div class="card-body">
         @can('create-customer')
         {{--
@@ -27,8 +27,8 @@
                     <td>{{ $row->number }}</td>
                     <td>{{ $row->getMachine->stock }}</td>
                     <td>{{ $row->getMachine->make . ' ' . $row->getMachine->model }}</td>
-                    <td>{{ $row->getStatus1->name }}</td>
-                    <td>{{ $row->getStatus2->name }}</td>
+                    <td>other</td>
+                    <td>open</td>
                     <td class="float-center">
                         <form action="{{ route('jobs.destroy', $row->id) }}" method="post">
                             @csrf

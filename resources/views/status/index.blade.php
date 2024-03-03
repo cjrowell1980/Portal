@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">status List</div>
+    <div class="card-header">Job Status List</div>
     <div class="card-body">
         @can('create-status')
             <a href="{{ route('status.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New status</a>

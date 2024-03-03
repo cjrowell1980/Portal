@@ -4,6 +4,9 @@ npm-debug.log
 yarn-error.log
 
 storage/*.key
+storage/framework/
+storage/logs/
+storage/debugbar/
 .env
 Homestead.yaml
 Homestead.json

@@ -12,7 +12,7 @@
                 <th scope="col">Stock</th>
                 <th scope="col">Make</th>
                 <th scope="col">Model</th>
-                <th scope="col" width="250px">Action</th>
+                <th scope="col" width="220px">Action</th>
                 </tr>
             </thead>
             <tbody>

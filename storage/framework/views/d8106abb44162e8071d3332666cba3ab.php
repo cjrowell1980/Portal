@@ -1,8 +1,8 @@
 <?php $__env->startSection('content'); ?>
 <div class="card">
-    <div class="card-header">Engineers</div>
+    <div class="card-header">Manage Engineers</div>
     <div class="card-body">
-        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create-engineer')): ?>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create-engineers')): ?>
             <a href="<?php echo e(route('engineers.create')); ?>" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Engineer</a>
         <?php endif; ?>
         <table class="table table-striped table-bordered">
@@ -12,7 +12,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Mobile</th>
                 <th scope="col">eMail</th>
-                <th scope="col" width="250px">Action</th>
+                <th scope="col" width="350px">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,11 +21,12 @@
                     <th scope="row"><?php echo e($loop->iteration); ?></th>
                     <td><?php echo e($row->name); ?></td>
                     <td><?php echo e($row->mobile); ?></td>
-                    <td><a href="mailto:<?php echo e($row->email); ?>" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="<?php echo e($row->email); ?>"><i class="bi bi-envelope-at"></i> Send eMail</a></td>
+                    <td><?php echo e($row->email); ?></td>
                     <td class="float-center">
                         <form action="<?php echo e(route('engineers.destroy', $row->id)); ?>" method="post">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('DELETE'); ?>
+                            <a href="mailto:<?php echo e($row->email); ?>" class="btn btn-info btn-sm"><i class="bi bi-envelope-at"></i> Send eMail</a>
 
                             <a href="<?php echo e(route('engineers.show', $row->id)); ?>" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
 

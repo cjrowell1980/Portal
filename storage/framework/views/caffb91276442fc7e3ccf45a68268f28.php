@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <div class="card">
-    <div class="card-header">Open Jobs List</div>
+    <div class="card-header">Open Jobs</div>
     <div class="card-body">
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create-customer')): ?>
         
@@ -13,7 +13,7 @@
                 <th scope="col">Stock</th>
                 <th scope="col">Machine</th>
                 <th scope="col" colspan="2">Status</th>
-                <th scope="col" width="250px">Action</th>
+                <th scope="col" width="220px">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +23,8 @@
                     <td><?php echo e($row->number); ?></td>
                     <td><?php echo e($row->getMachine->stock); ?></td>
                     <td><?php echo e($row->getMachine->make . ' ' . $row->getMachine->model); ?></td>
-                    <td></td>
-                    <td></td>
+                    <td>other</td>
+                    <td>open</td>
                     <td class="float-center">
                         <form action="<?php echo e(route('jobs.destroy', $row->id)); ?>" method="post">
                             <?php echo csrf_field(); ?>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">status List</div>
+    <div class="card-header">Customer List</div>
     <div class="card-body">
         @can('create-customer')
             <a href="{{ route('customers.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Customer</a>

@@ -27,16 +27,44 @@
             <div class="card-body">
 
                     <div class="row">
-                        <label for="parent" class="col-md-4 col-form-label text-md-end text-start"><strong>Name:</strong></label>
+                        <label for="number" class="col-md-4 col-form-label text-md-end text-start"><strong>Job Number:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            a
+                            {{ $job->number }}
                         </div>
                     </div>
 
                     <div class="row">
-                        <label for="order" class="col-md-4 col-form-label text-md-end text-start"><strong>Syrinx Acc:</strong></label>
+                        <label for="status" class="col-md-4 col-form-label text-md-end text-start"><strong>Status:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">    
+                            @if ($job->status)
+                                <span class="badge rounded-pill bg-warning w-25">Open</span>    
+                            @else
+                                <span class="badge rounded-pill bg-success 2-25">Closed</span>                            
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="machine" class="col-md-4 col-form-label text-md-end text-start"><strong>Machine:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            a
+                            {{ $job->getMachine->stock . " - " . $job->getMachine->make . " " . $job->getMachine->model }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="fault" class="col-md-4 col-form-label text-md-end text-start"><strong>Reported Fault:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $job->fault }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="status" class="col-md-4 col-form-label text-md-end text-start"><strong>Statuses:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            <span class="badge rounded-pill bg-info">Jobsheet Pending</span> 
+                            <span class="badge rounded-pill bg-info">Invoice Pending</span> 
+                            <span class="badge rounded-pill bg-info">Pictures Pending</span> 
+                            <span class="badge rounded-pill bg-info">Warranty Pending</span>
                         </div>
                     </div>
 

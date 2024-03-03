@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('contactNo');
             $table->unsignedBigInteger('engineer')->index();
             $table->foreign('engineer')->references('id')->on('engineers')->cascadeOnDelete();
+            $table->boolean('status')->nullable()->default(false);
 
             $table->timestamps();
         });
