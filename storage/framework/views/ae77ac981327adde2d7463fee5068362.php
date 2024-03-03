@@ -135,6 +135,7 @@
             </div>
         </main>
     </div>
+    <script src="../_vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 <?php /**PATH C:\Users\cjrow\OneDrive\Desktop\VSC_Projects\Portal\resources\views/layouts/app.blade.php ENDPATH**/ ?>

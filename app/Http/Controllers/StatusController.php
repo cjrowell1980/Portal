@@ -28,7 +28,12 @@ class StatusController extends Controller
     public function index(): View
     {
         return view('status.index', [
-            'status' => Status::latest()->paginate(env('APP_PAGE_FULL'))
+//            'status' => Status::latest()->paginate(env('APP_PAGE_FULL'))
+            'status0' => Status::where('parent', 0)->orderBy('order', 'ASC')->paginate(env('APP_PAGE_HALF')),
+            'status1' => Status::where('parent', 1)->orderBy('order', 'ASC')->paginate(env('APP_PAGE_HALF')),
+            'status2' => Status::where('parent', 2)->orderBy('order', 'ASC')->paginate(env('APP_PAGE_HALF')),
+            'status3' => Status::where('parent', 3)->orderBy('order', 'ASC')->paginate(env('APP_PAGE_HALF')),
+            'status4' => Status::where('parent', 4)->orderBy('order', 'ASC')->paginate(env('APP_PAGE_HALF')),
         ]);
     }
 

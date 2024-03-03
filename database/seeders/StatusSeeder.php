@@ -55,6 +55,13 @@ class StatusSeeder extends Seeder
             'order'         => 1,
             'colour'        => 'success',
         ]);
+        Status::create([
+            'parent'        => $status_0A->id,
+            'name'          => 'Overdue',
+            'description'   => 'job sheet has been recieved',
+            'order'         => 2,
+            'colour'        => 'danger',
+        ]);
         Status::create([ // Incoming Invoice
             'parent'        => $status_0B->id,
             'name'          => 'Pending',
