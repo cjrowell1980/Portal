@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jobs;
+use App\Models\Status;
 use App\Http\Requests\StoreJobsRequest;
 use App\Http\Requests\UpdateJobsRequest;
 use App\Models\Engineers;
@@ -53,7 +54,11 @@ class JobsController extends Controller
     public function show(Jobs $job): View
     {
         return view('jobs.show', [
-            'job'   => $job,
+            'job'       => $job,
+            'status_1'  => Status::where('parent', 1)->orderBy('order', 'ASC')->get(),
+            'status_3'  => Status::where('parent', 3)->orderBy('order', 'ASC')->get(),
+            'status_2'  => Status::where('parent', 2)->orderBy('order', 'ASC')->get(),
+            'status_4'  => Status::where('parent', 4)->orderBy('order', 'ASC')->get(),
         ]);
     }
 

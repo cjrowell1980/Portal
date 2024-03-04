@@ -77,10 +77,14 @@
                     <div class="row">
                         <label for="status" class="col-md-4 col-form-label text-md-end text-start"><strong>Statuses:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            <span class="badge rounded-pill bg-info w-23">Jobsheet Pending</span>
-                            <span class="badge rounded-pill bg-info w-23">Invoice Pending</span>
-                            <span class="badge rounded-pill bg-info w-23">Pictures Pending</span>
-                            <span class="badge rounded-pill bg-info w-23">Warranty Pending</span>
+                            {{-- Status 1 = Jobsheet --}}
+                            <span class="badge rounded-pill bg-{{$job->getStatus1->colour}} w-23">Jobsheet {{$job->getStatus1->name}}</span>
+                            {{-- Status 3 = Photos --}}
+                            <span class="badge rounded-pill bg-{{$job->getStatus3->colour}} w-23">Photos {{$job->getStatus3->name}}</span>
+                            {{-- Status 2 = Incoming Invoice--}}
+                            <span class="badge rounded-pill bg-{{$job->getStatus2->colour}} w-23">Invoice In {{$job->getStatus2->name}}</span>
+                            {{-- Status 4 = Outgoing Invoice --}}
+                            <span class="badge rounded-pill bg-{{$job->getStatus4->colour}} w-23">Invoice Out {{$job->getStatus4->name}}</span>
                         </div>
                     </div>
 

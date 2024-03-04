@@ -14,16 +14,30 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('machine')->index();
-            $table->foreign('machine')->references('id')->on('machines')->cascadeOnDelete();
             $table->string('number');
             $table->longtext('fault');
             $table->longText('address');
             $table->string('contactName');
             $table->string('contactNo');
-            $table->unsignedBigInteger('engineer')->index();
-            $table->foreign('engineer')->references('id')->on('engineers')->cascadeOnDelete();
             $table->boolean('status')->nullable()->default(false);
+
+            // Engineer Relationship
+            $table->unsignedBigInteger('engineer')->index();
+            $table->foreign('engineer')->references('id')->on('engineers');
+
+            // Machine Relationship
+            $table->unsignedBigInteger('machine')->index();
+            $table->foreign('machine')->references('id')->on('machines');
+
+            // Statuses Relationships
+            $table->unsignedBigInteger('status_1')->index(); // Jobsheet
+            $table->foreign('status_1')->references('id')->on('statuses');
+            $table->unsignedBigInteger('status_2')->index(); // Incoming Invoice
+            $table->foreign('status_2')->references('id')->on('statuses');
+            $table->unsignedBigInteger('status_3')->index(); // Photos
+            $table->foreign('status_3')->references('id')->on('statuses');
+            $table->unsignedBigInteger('status_4')->index(); // Outgoing Invoice
+            $table->foreign('status_4')->references('id')->on('statuses');
             
 
             $table->timestamps();

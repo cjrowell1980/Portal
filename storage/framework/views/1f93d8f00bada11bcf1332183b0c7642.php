@@ -80,10 +80,14 @@
                     <div class="row">
                         <label for="status" class="col-md-4 col-form-label text-md-end text-start"><strong>Statuses:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
-                            <span class="badge rounded-pill bg-info w-23">Jobsheet Pending</span>
-                            <span class="badge rounded-pill bg-info w-23">Invoice Pending</span>
-                            <span class="badge rounded-pill bg-info w-23">Pictures Pending</span>
-                            <span class="badge rounded-pill bg-info w-23">Warranty Pending</span>
+                            
+                            <span class="badge rounded-pill bg-<?php echo e($job->getStatus1->colour); ?> w-23">Jobsheet <?php echo e($job->getStatus1->name); ?></span>
+                            
+                            <span class="badge rounded-pill bg-<?php echo e($job->getStatus3->colour); ?> w-23">Photos <?php echo e($job->getStatus3->name); ?></span>
+                            
+                            <span class="badge rounded-pill bg-<?php echo e($job->getStatus2->colour); ?> w-23">Invoice In <?php echo e($job->getStatus2->name); ?></span>
+                            
+                            <span class="badge rounded-pill bg-<?php echo e($job->getStatus4->colour); ?> w-23">Invoice Out <?php echo e($job->getStatus4->name); ?></span>
                         </div>
                     </div>
 
