@@ -41,7 +41,7 @@ class StatusSeeder extends Seeder
             'order'         => 0,
             'colour'        => 'info',
         ]);
-        Status::create([ // Jobsheet
+        Status::create([ // Jobsheet - 5
             'parent'        => $status_0A->id,
             'name'          => 'Pending',
             'description'   => 'job sheet has not yet been recieved',
@@ -62,7 +62,7 @@ class StatusSeeder extends Seeder
             'order'         => 2,
             'colour'        => 'danger',
         ]);
-        Status::create([ // Incoming Invoice
+        Status::create([ // Incoming Invoice - 8
             'parent'        => $status_0B->id,
             'name'          => 'Pending',
             'description'   => 'invoice has not yet been recieved',
@@ -90,7 +90,7 @@ class StatusSeeder extends Seeder
             'order'         => 3,
             'colour'        => 'success',
         ]);
-        Status::create([ // Photos
+        Status::create([ // Photos - 12
             'parent'        => $status_0C->id,
             'name'          => 'Pending',
             'description'   => 'Photos has not yet been recieved',
@@ -111,7 +111,7 @@ class StatusSeeder extends Seeder
             'order'         => 2,
             'colour'        => 'danger',
         ]);
-        Status::create([ // Outgoing invoice
+        Status::create([ // Outgoing invoice - 15
             'parent'        => $status_0D->id,
             'name'          => 'Pending',
             'description'   => 'Chargeable invoice or warranty claim has not yet been sent',

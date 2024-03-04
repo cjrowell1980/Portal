@@ -78,6 +78,9 @@
                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['create-engineers', 'edit-engineers', 'delete-engineers'])): ?>
                                             <a href="<?php echo e(route('engineers.index')); ?>" class="dropdown-item">Manage Engineers</a>
                                         <?php endif; ?>
+                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['edit-settings'])): ?>
+                                            <a href="<?php echo e(route('settings.show', 1)); ?>" class="dropdown-item">Manage Settings</a>
+                                        <?php endif; ?>
                                     </div>
                                 </li>
                             <?php endif; ?>

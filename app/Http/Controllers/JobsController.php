@@ -8,6 +8,7 @@ use App\Http\Requests\StoreJobsRequest;
 use App\Http\Requests\UpdateJobsRequest;
 use App\Models\JobHistory;
 use App\Models\Machines;
+use App\Models\Settings;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -20,7 +21,6 @@ class JobsController extends Controller
     public function index(): View
     {
         return view('jobs.index', [
-//            'jobs'  => Jobs::latest()->paginate(env('APP_PAGE_FULL')),
             'jobs'   => Jobs::where('status', 1)->orderBy('created_at', 'DESC')->paginate(env('APP_PAGE_FULL')), 
         ]);
     }
@@ -30,8 +30,10 @@ class JobsController extends Controller
      */
     public function create(Request $request): View
     {
+        $settings = Settings::where('id', 1)->get();
         return view('jobs.create', [
             'machine'   => Machines::find($request->id),
+            'settings'  => $settings,
         ]);
     }
 

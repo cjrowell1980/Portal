@@ -11,7 +11,7 @@ class UpdateSettingsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateSettingsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'status_1'  => 'required',
+            'status_2'  => 'required',
+            'status_3'  => 'required',
+            'status_4'  => 'required',
         ];
     }
 }

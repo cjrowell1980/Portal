@@ -14,10 +14,17 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
 
-            $table->string('status_1'); // default jobsheet status
-            $table->string('status_2'); // default in invoice status
-            $table->string('status_3'); // default photo status
-            $table->string('status_4'); // default out invoice status
+            $table->unsignedBigInteger('status_1')->index();
+            $table->foreign('status_1')->references('id')->on('statuses');
+            
+            $table->unsignedBigInteger('status_2')->index();
+            $table->foreign('status_2')->references('id')->on('statuses');
+            
+            $table->unsignedBigInteger('status_3')->index();
+            $table->foreign('status_3')->references('id')->on('statuses');
+            
+            $table->unsignedBigInteger('status_4')->index();
+            $table->foreign('status_4')->references('id')->on('statuses');
 
             $table->timestamps();
         });

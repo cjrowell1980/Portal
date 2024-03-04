@@ -41,6 +41,8 @@ class PermissionSeeder extends Seeder
             'create-engineers',
             'edit-engineers',
             'delete-engineers',
+
+            'edit-settings',
         ];
 
         foreach ($permissions as $permission) {

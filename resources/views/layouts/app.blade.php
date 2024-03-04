@@ -78,6 +78,9 @@
                                         @canany(['create-engineers', 'edit-engineers', 'delete-engineers'])
                                             <a href="{{ route('engineers.index') }}" class="dropdown-item">Manage Engineers</a>
                                         @endcanany
+                                        @canany(['edit-settings'])
+                                            <a href="{{ route('settings.show', 1) }}" class="dropdown-item">Manage Settings</a>
+                                        @endcanany
                                     </div>
                                 </li>
                             @endcanany

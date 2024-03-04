@@ -38,6 +38,7 @@ class RoleSeeder extends Seeder
             'create-engineers',
             'edit-engineers',
             'delete-engineers',
+            'edit-settings',
         ]);
     }
 }
