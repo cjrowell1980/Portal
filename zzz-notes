@@ -3,5 +3,6 @@ php artisan make:model <<name>> -mcr --requests (make controller with with funct
 create views
 
 
+
 update seeders
     add role for models
