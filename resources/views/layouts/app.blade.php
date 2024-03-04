@@ -113,14 +113,9 @@
                     <div class="col-md-12">
 
                         @if ($message = Session::get('success'))
-                            <div class="alert alert-success text-center" role="alert">
+                            <div class="alert alert-success text-center alert-dismissible" role="alert">
                                 {{ $message }}
-                            </div>
-                        @endif
-
-                        @if ($message = Session::get('errors'))
-                            <div class="alert alert-danger text-center" role="alert">
-                                {{ $message }}
+                                <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
                             </div>
                         @endif
 

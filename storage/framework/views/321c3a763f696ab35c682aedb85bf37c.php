@@ -110,18 +110,6 @@ unset($__errorArgs, $__bag); ?>" id="contactNo" name="contactNo" value="<?php ec
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="engineer" class="col-md-4 col-form-label text-md-end text-start">Engineer</label>
-                        <div class="col-md-6">
-                            <select name="engineer" id="engineer" class="form-control">
-                                <option value="">Select Engineer...</option>
-                                <?php $__currentLoopData = $engineers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($row->id); ?>"><?php echo e($row->name); ?></option>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Job">
                     </div>
 

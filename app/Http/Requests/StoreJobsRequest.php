@@ -28,7 +28,6 @@ class StoreJobsRequest extends FormRequest
             'fault'         => 'required',
             'contactName'   => 'required',
             'contactNo'     => 'required',
-            'engineer'      => 'required',
         ];
     }
 }

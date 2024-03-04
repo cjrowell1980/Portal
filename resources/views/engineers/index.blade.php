@@ -11,6 +11,7 @@
             <thead>
                 <tr>
                 <th scope="col" width="50px">#</th>
+                <th scope="col" width="150px">Short</th>
                 <th scope="col">Name</th>
                 <th scope="col">Mobile</th>
                 <th scope="col">eMail</th>
@@ -21,6 +22,7 @@
                 @forelse ($engineers as $row)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $row->short }}</td>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->mobile }}</td>
                     <td>{{ $row->email }}</td>

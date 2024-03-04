@@ -13,10 +13,11 @@
             <thead>
                 <tr>
                 <th scope="col" width="50px">#</th>
-                <th scope="col">Stock</th>
-                <th scope="col">Make</th>
-                <th scope="col">Model</th>
-                <th scope="col" width="250px">Action</th>
+                <th scope="col" width="100px">Stock</th>
+                <th scope="col">Make & Model</th>
+                <th scope="col" width="110px" class="text-center">Open Jobs</th>
+                <th scope="col" width="110px" class="text-center">Closed Jobs</th>
+                <th scope="col" width="250px" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,9 +25,10 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $row->stock }}</td>
-                    <td>{{ $row->make }}</td>
-                    <td>{{ $row->model }}</td>
-                    <td class="float-center">
+                    <td>{{ $row->make }} {{ $row->model }}</td>
+                    <td class="text-center">{{ count($row->getJobs->where('status', 0)) }} </td>
+                    <td class="text-center">{{ count($row->getJobs->where('status', 1)) }} </td>
+                    <td class="text-center">
                         <form action="{{ route('machines.destroy', $row->id) }}" method="post">
                             @csrf
                             @method('DELETE')

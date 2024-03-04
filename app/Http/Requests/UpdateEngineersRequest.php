@@ -22,6 +22,7 @@ class UpdateEngineersRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'short'     => 'required|unique:engineers,short,' .$this->engineer->id,
             'name'      => 'required',
             'email'     => 'required|email',
             'mobile'    => 'required',

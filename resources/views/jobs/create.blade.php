@@ -77,18 +77,6 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="engineer" class="col-md-4 col-form-label text-md-end text-start">Engineer</label>
-                        <div class="col-md-6">
-                            <select name="engineer" id="engineer" class="form-control">
-                                <option value="">Select Engineer...</option>
-                                @foreach ($engineers as $row)
-                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Job">
                     </div>
 

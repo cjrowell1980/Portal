@@ -48,16 +48,6 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="notes" class="col-md-4 col-form-label text-md-end text-start">Notes</label>
-                        <div class="col-md-6">
-                            <textarea name="notes" id="notes" cols="30" rows="5" class="form-control @error('notes') is-invalid @enderror">{!! $engineer->notes !!}</textarea>
-                            @if ($errors->has('notes'))
-                                <span class="text-danger">{{ $errors->first('notes') }}</span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update JobHistory">
                     </div>
 

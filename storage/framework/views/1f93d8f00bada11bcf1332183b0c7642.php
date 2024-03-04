@@ -109,7 +109,6 @@
                         <th scope="col" width="1%">#</th>
                         <th scope="col" width="100px">Opened</th>
                         <th scope="col" width="100px">Scheduled</th>
-                        <th scope="col">Engineer</th>
                         <th scope="col" width="75px" class="text-center">Days</th>
                         <th scope="col" width="250px">Action</th>
                     </thead>
@@ -118,7 +117,6 @@
                                 <td>1</td>
                                 <td>01 Mar 24</td>
                                 <td>04 Mar 24</td>
-                                <td>ChrisR</td>
                                 <td><span class="badge rounded-pill bg-warning w-75">Open</span></td>
                                 <td>
                                     <form action="#" method="POST">

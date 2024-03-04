@@ -16,7 +16,6 @@ class Jobs extends Model
         'address',
         'contactName',
         'contactNo',
-        'engineer',
     ];
 
     public function getMachine()
@@ -24,27 +23,22 @@ class Jobs extends Model
         return $this->belongsTo(Machines::class, 'machine');
     }
 
-    public function getEngineer()
-    {
-        return $this->belongsTo(Engineers::class, 'engineer');
-    }
-
-    public function getStatus1()
+    public function getStatus1() // Jobsheet
     {
         return $this->belongsTo(Status::class, 'status_1');
     }
 
-    public function getStatus2()
+    public function getStatus2() // Invoice In
     {
         return $this->belongsTo(Status::class, 'status_2');
     }
 
-    public function getStatus3()
+    public function getStatus3() // Photos
     {
         return $this->belongsTo(Status::class, 'status_3');
     }
 
-    public function getStatus4()
+    public function getStatus4() // Invoice Out
     {
         return $this->belongsTo(Status::class, 'status_4');
     }

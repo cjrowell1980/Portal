@@ -6,7 +6,6 @@ use App\Models\Jobs;
 use App\Models\Status;
 use App\Http\Requests\StoreJobsRequest;
 use App\Http\Requests\UpdateJobsRequest;
-use App\Models\Engineers;
 use App\Models\JobHistory;
 use App\Models\Machines;
 use Illuminate\Http\RedirectResponse;
@@ -32,7 +31,6 @@ class JobsController extends Controller
     public function create(Request $request): View
     {
         return view('jobs.create', [
-            'engineers' => Engineers::all(),
             'machine'   => Machines::find($request->id),
         ]);
     }

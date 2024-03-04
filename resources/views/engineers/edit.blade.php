@@ -20,6 +20,16 @@
                     @method("PUT")
 
                     <div class="mb-3 row">
+                        <label for="short" class="col-md-4 col-form-label text-md-end text-start">Short</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control @error('short') is-invalid @enderror" id="short" name="short" value="{{ $engineer->short }}">
+                            @if ($errors->has('short'))
+                                <span class="text-danger">{{ $errors->first('short') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
                         <label for="name" class="col-md-4 col-form-label text-md-end text-start">Name</label>
                         <div class="col-md-6">
                           <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $engineer->name }}">

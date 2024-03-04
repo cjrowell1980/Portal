@@ -115,16 +115,10 @@
                     <div class="col-md-12">
 
                         <?php if($message = Session::get('success')): ?>
-                            <div class="alert alert-success text-center" role="alert">
+                            <div class="alert alert-success text-center alert-dismissible" role="alert">
                                 <?php echo e($message); ?>
 
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if($message = Session::get('errors')): ?>
-                            <div class="alert alert-danger text-center" role="alert">
-                                <?php echo e($message); ?>
-
+                                <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
                             </div>
                         <?php endif; ?>
 

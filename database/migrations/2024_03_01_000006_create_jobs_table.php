@@ -21,10 +21,6 @@ return new class extends Migration
             $table->string('contactNo');
             $table->boolean('status')->nullable()->default(false);
 
-            // Engineer Relationship
-            $table->unsignedBigInteger('engineer')->index();
-            $table->foreign('engineer')->references('id')->on('engineers');
-
             // Machine Relationship
             $table->unsignedBigInteger('machine')->index();
             $table->foreign('machine')->references('id')->on('machines');

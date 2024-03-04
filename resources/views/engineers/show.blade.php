@@ -27,6 +27,13 @@
             <div class="card-body">
 
                 <div class="row">
+                    <label for="short" class="col-md-4 col-form-label text-md-end text-start"><strong>Short Name:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        {{ $engineer->short }}
+                    </div>
+                </div>
+
+                <div class="row">
                     <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Name:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
                         {{ $engineer->name }}

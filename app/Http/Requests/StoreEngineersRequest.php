@@ -22,6 +22,7 @@ class StoreEngineersRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'short'     => 'required|unique:engineers,short',
             'name'      => 'required',
             'email'     => 'required|email',
             'mobile'    => 'required',

@@ -10,6 +10,7 @@ class Engineers extends Model
     use HasFactory;
 
     protected $fillable = [
+        'short',
         'name',
         'email',
         'mobile',

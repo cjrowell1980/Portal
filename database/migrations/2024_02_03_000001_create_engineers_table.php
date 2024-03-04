@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('engineers', function (Blueprint $table) {
             $table->id();
 
+            $table->string('short');
             $table->string('name');
             $table->string('email');
             $table->string('mobile');

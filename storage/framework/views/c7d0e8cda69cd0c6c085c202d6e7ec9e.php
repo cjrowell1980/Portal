@@ -9,10 +9,11 @@
             <thead>
                 <tr>
                 <th scope="col" width="50px">#</th>
-                <th scope="col">Stock</th>
-                <th scope="col">Make</th>
-                <th scope="col">Model</th>
-                <th scope="col" width="250px">Action</th>
+                <th scope="col" width="100px">Stock</th>
+                <th scope="col">Make & Model</th>
+                <th scope="col" width="110px" class="text-center">Open Jobs</th>
+                <th scope="col" width="110px" class="text-center">Closed Jobs</th>
+                <th scope="col" width="250px" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,9 +21,10 @@
                 <tr>
                     <th scope="row"><?php echo e($loop->iteration); ?></th>
                     <td><?php echo e($row->stock); ?></td>
-                    <td><?php echo e($row->make); ?></td>
-                    <td><?php echo e($row->model); ?></td>
-                    <td class="float-center">
+                    <td><?php echo e($row->make); ?> <?php echo e($row->model); ?></td>
+                    <td class="text-center"><?php echo e(count($row->getJobs->where('status', 0))); ?> </td>
+                    <td class="text-center"><?php echo e(count($row->getJobs->where('status', 1))); ?> </td>
+                    <td class="text-center">
                         <form action="<?php echo e(route('machines.destroy', $row->id)); ?>" method="post">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('DELETE'); ?>

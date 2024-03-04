@@ -9,6 +9,7 @@
             <thead>
                 <tr>
                 <th scope="col" width="50px">#</th>
+                <th scope="col" width="150px">Short</th>
                 <th scope="col">Name</th>
                 <th scope="col">Mobile</th>
                 <th scope="col">eMail</th>
@@ -19,6 +20,7 @@
                 <?php $__empty_1 = true; $__currentLoopData = $engineers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
                     <th scope="row"><?php echo e($loop->iteration); ?></th>
+                    <td><?php echo e($row->short); ?></td>
                     <td><?php echo e($row->name); ?></td>
                     <td><?php echo e($row->mobile); ?></td>
                     <td><?php echo e($row->email); ?></td>

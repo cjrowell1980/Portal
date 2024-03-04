@@ -19,6 +19,16 @@
                     @csrf
 
                     <div class="mb-3 row">
+                        <label for="short" class="col-md-4 col-form-label text-md-end text-start">Short Name</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control @error('short') is-invalid @enderror" id="short" name="short" value="{{ old('short') }}">
+                            @if ($errors->has('short'))
+                                <span class="text-danger">{{ $errors->first('short') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
                         <label for="name" class="col-md-4 col-form-label text-md-end text-start">Engineer Name</label>
                         <div class="col-md-6">
                           <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
@@ -61,7 +71,7 @@
                     <div class="mb-3 row">
                         <label for="shipping" class="col-md-4 col-form-label text-md-end text-start">Shipping Address</label>
                         <div class="col-md-6">
-                            <textarea name="shipping" id="shipping" cols="30" rows="5" class="form-control @error('shipping') is-invalid @enderror">{!! nl2brold('shipping')) !!}</textarea>
+                            <textarea name="shipping" id="shipping" cols="30" rows="5" class="form-control @error('shipping') is-invalid @enderror">{!! nl2br(old('shipping')) !!}</textarea>
                             @if ($errors->has('shipping'))
                                 <span class="text-danger">{{ $errors->first('shipping') }}</span>
                             @endif
@@ -69,7 +79,7 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Customer">
+                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Engineer">
                     </div>
 
                 </form>

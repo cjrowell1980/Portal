@@ -22,6 +22,7 @@ class TestSeeder extends Seeder
         $status_4 = Status::where('parent', 4)->orderBy('order', 'ASC')->get();
         
         $engineer = Engineers::create([
+            'short'         => 'ChrisR',
             'name'          => 'Chris Rowell',
             'email'         => 'c.j.rowell@sky.com',
             'mobile'        => '07508 448 120',
@@ -47,7 +48,6 @@ class TestSeeder extends Seeder
             'address'       => 'somewhere',
             'contactName'   => 'someone',
             'contactNo'     => '01480 891 251',
-            'engineer'      => $engineer->id,
             'status'        => true,
             'status_1'      => $status_1[0]->id,
             'status_2'      => $status_2[0]->id,
@@ -61,7 +61,6 @@ class TestSeeder extends Seeder
             'address'       => 'somewhere',
             'contactName'   => 'someone',
             'contactNo'     => '01480 891 251',
-            'engineer'      => $engineer->id,
             'status'        => false,
             'status_1'      => $status_1[1]->id,
             'status_2'      => $status_2[1]->id,
