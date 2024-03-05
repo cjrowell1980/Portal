@@ -15,7 +15,7 @@
                         <a href="<?php echo e(route('machines.show', $job->getMachine->id)); ?>" class="btn btn-primary btn-sm">&larr; Back</a>
                         <?php if($job->status == 1): ?>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-jobs')): ?>
-                                <a href="<?php echo e(route('customers.edit', $job->id)); ?>" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                
+                                <a href="<?php echo e(route('jobs.edit', $job->id)); ?>" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                
                             <?php endif; ?>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete-jobs')): ?>
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this job?');"><i class="bi bi-trash"></i> Delete

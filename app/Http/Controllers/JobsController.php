@@ -67,7 +67,11 @@ class JobsController extends Controller
     public function edit(Jobs $job): View
     {
         return view('jobs.edit', [
-            'job'   => $job
+            'job'   => $job,
+            'status_1'    => Status::where('parent', 1)->orderBy('Order', 'ASC')->get(),
+            'status_2'    => Status::where('parent', 2)->orderBy('Order', 'ASC')->get(),
+            'status_3'    => Status::where('parent', 3)->orderBy('Order', 'ASC')->get(),
+            'status_4'    => Status::where('parent', 4)->orderBy('Order', 'ASC')->get(),
         ]);
     }
 
@@ -77,9 +81,8 @@ class JobsController extends Controller
     public function update(UpdateJobsRequest $request, Jobs $job): RedirectResponse
     {
         $job->update($request->all());
-        return redirect()->route('jobs.show', [
-            'job'   => $job
-        ]);
+        return redirect()->route('jobs.show', $job->id)
+            ->withSuccess('Job has been updated successfully.');
     }
 
     /**
