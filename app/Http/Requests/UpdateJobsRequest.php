@@ -28,6 +28,11 @@ class UpdateJobsRequest extends FormRequest
             'fault'         => 'required',
             'contactName'   => 'required',
             'contactNo'     => 'required',
+            'status_1'      => 'required',
+            'status_2'      => 'required',
+            'status_3'      => 'required',
+            'status_4'      => 'required',
+            'status'        => 'required',
         ];
     }
 }

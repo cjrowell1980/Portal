@@ -30,10 +30,9 @@ class JobsController extends Controller
      */
     public function create(Request $request): View
     {
-        $settings = Settings::where('id', 1)->get();
         return view('jobs.create', [
             'machine'   => Machines::find($request->id),
-            'settings'  => $settings,
+            'settings' => Settings::find(1)->all(),
         ]);
     }
 

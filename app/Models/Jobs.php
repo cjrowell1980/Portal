@@ -16,6 +16,11 @@ class Jobs extends Model
         'address',
         'contactName',
         'contactNo',
+        'status_1',
+        'status_2',
+        'status_3',
+        'status_4',
+        'status',
     ];
 
     public function getMachine()

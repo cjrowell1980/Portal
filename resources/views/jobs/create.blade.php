@@ -17,11 +17,11 @@
             <div class="card-body">
                 <form action="{{ route('jobs.store') }}" method="post">
                     @csrf
-
-                    <input type="hidden" name="status_1" id="status_1" value="{{$settings->status_1}}">
-                    <input type="hidden" name="status_1" id="status_2" value="{{$settings->status_2}}">
-                    <input type="hidden" name="status_1" id="status_3" value="{{$settings->status_3}}">
-                    <input type="hidden" name="status_1" id="status_4" value="{{$settings->status_4}}">
+                    <input type="hidden" name="status_1" id="status_1" value="{{$settings[0]->status_1}}">
+                    <input type="hidden" name="status_2" id="status_2" value="{{$settings[0]->status_2}}">
+                    <input type="hidden" name="status_3" id="status_3" value="{{$settings[0]->status_3}}">
+                    <input type="hidden" name="status_4" id="status_4" value="{{$settings[0]->status_4}}">
+                    <input type="hidden" name="status" id="status" value="1">
 
                     <div class="mb-3 row">
                         <label for="machineName" class="col-md-4 fol-form-label text-md-end text-start">Machine</label>
