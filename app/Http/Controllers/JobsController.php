@@ -52,12 +52,14 @@ class JobsController extends Controller
      */
     public function show(Jobs $job): View
     {
+        $history = JobHistory::where('record', $job->id)->orderBy('created_at', 'DESC')->paginate(env('APP_PAGE_HALF'));
         return view('jobs.show', [
             'job'       => $job,
             'status_1'  => Status::where('parent', 1)->orderBy('order', 'ASC')->get(),
             'status_3'  => Status::where('parent', 3)->orderBy('order', 'ASC')->get(),
             'status_2'  => Status::where('parent', 2)->orderBy('order', 'ASC')->get(),
             'status_4'  => Status::where('parent', 4)->orderBy('order', 'ASC')->get(),
+            'history'   => $history,
         ]);
     }
 
@@ -80,7 +82,11 @@ class JobsController extends Controller
      */
     public function update(UpdateJobsRequest $request, Jobs $job): RedirectResponse
     {
+        $old = Jobs::find($job->id)->get();
         $job->update($request->all());
+
+        JobHistory::create(['field' => 'all', 'old' => $old, 'new' => $job, 'user' => auth()->user()->id, 'record' => $job->id]);
+
         return redirect()->route('jobs.show', $job->id)
             ->withSuccess('Job has been updated successfully.');
     }
