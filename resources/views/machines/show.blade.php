@@ -75,11 +75,11 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th scope="col" width="1%">#</th>
-                        <th scope="col" width="100px">Job No#</th>
-                        <th scope="col" width="100px" class="text-center">Status</th>
+                        <th scope="col" width="80px">Job No#</th>
+                        <th scope="col" width="80px" class="text-center">Status</th>
                         <th scope="col">Fault</th>
-                        <th scope="col" width="75px" class="text-center">Days</th>
-                        <th scope="col" width="250px">Action</th>
+                        <th scope="col" width="50px" class="text-center">Days</th>
+                        <th scope="col" width="230px" class="text-center">Action</th>
                     </thead>
                     <tbody>
                         @forelse ($machine->getJobs as $row )
@@ -88,9 +88,9 @@
                                 <td>{{ $row->number }}</td>
                                 <td class="text-center">
                                     @if ($row->status)
-                                        <span class='badge rounded-pill bg-warning w-75'>Open</span>
+                                        <span class='badge rounded-pill bg-warning w-100'>Open</span>
                                     @else
-                                        <span class='badge rounded-pill bg-success w-75'>Closed</span>                                    
+                                        <span class='badge rounded-pill bg-success w-100'>Closed</span>                                    
                                     @endif
                                 </td>
                                 <td>{{ $row->fault }}</td>
@@ -101,7 +101,7 @@
                                         {{ now()->diffInDays($row->created_at)}}
                                     @endif
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <form action="{{ route('jobs.destroy', $row->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -124,8 +124,6 @@
                             </span>
                         </td>
                         @endforelse
-
-
 
                     </tbody>
                 </table>

@@ -78,11 +78,11 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th scope="col" width="1%">#</th>
-                        <th scope="col" width="100px">Job No#</th>
-                        <th scope="col" width="100px" class="text-center">Status</th>
+                        <th scope="col" width="80px">Job No#</th>
+                        <th scope="col" width="80px" class="text-center">Status</th>
                         <th scope="col">Fault</th>
-                        <th scope="col" width="75px" class="text-center">Days</th>
-                        <th scope="col" width="250px">Action</th>
+                        <th scope="col" width="50px" class="text-center">Days</th>
+                        <th scope="col" width="230px" class="text-center">Action</th>
                     </thead>
                     <tbody>
                         <?php $__empty_1 = true; $__currentLoopData = $machine->getJobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -91,9 +91,9 @@
                                 <td><?php echo e($row->number); ?></td>
                                 <td class="text-center">
                                     <?php if($row->status): ?>
-                                        <span class='badge rounded-pill bg-warning w-75'>Open</span>
+                                        <span class='badge rounded-pill bg-warning w-100'>Open</span>
                                     <?php else: ?>
-                                        <span class='badge rounded-pill bg-success w-75'>Closed</span>                                    
+                                        <span class='badge rounded-pill bg-success w-100'>Closed</span>                                    
                                     <?php endif; ?>
                                 </td>
                                 <td><?php echo e($row->fault); ?></td>
@@ -106,7 +106,7 @@
 
                                     <?php endif; ?>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <form action="<?php echo e(route('jobs.destroy', $row->id)); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>
@@ -129,8 +129,6 @@
                             </span>
                         </td>
                         <?php endif; ?>
-
-
 
                     </tbody>
                 </table>

@@ -52,14 +52,12 @@ class JobsController extends Controller
      */
     public function show(Jobs $job): View
     {
-        $history = JobHistory::where('record', $job->id)->orderBy('created_at', 'DESC')->paginate(env('APP_PAGE_HALF'));
         return view('jobs.show', [
             'job'       => $job,
             'status_1'  => Status::where('parent', 1)->orderBy('order', 'ASC')->get(),
             'status_3'  => Status::where('parent', 3)->orderBy('order', 'ASC')->get(),
             'status_2'  => Status::where('parent', 2)->orderBy('order', 'ASC')->get(),
             'status_4'  => Status::where('parent', 4)->orderBy('order', 'ASC')->get(),
-            'history'   => $history,
         ]);
     }
 

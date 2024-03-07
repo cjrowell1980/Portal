@@ -142,48 +142,6 @@
             </div>
         </div>
 
-        <div class="card mt-3">
-            <div class="card-header">
-                <div class="float-start">
-                    Audit
-                </div>
-                <div class="float-end"></div>
-            </div>
-            <div class="card-body">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <th scope="col" width="1%">#</th>
-                        <th scope="col">Field</th>
-                        <th scope="col">Old</th>
-                        <th scope="col">New</th>
-                        <th scope="col">User</th>
-                        <th scope="col">Date</th>
-                    </thead>
-                    <tbody>
-                        @forelse ($history as $row )
-                            <?php $old = explode(',',$row->old); $new = explode(',',$row->new); ?>
-                            @foreach ($old as $k => $v)
-                                    <tr>
-                                        <td>{{$k}}</td>
-                                        <td>{{$v}}</td>
-                                        <td></td>
-                                        <td>{{$row->getUser->short}}</td>
-                                        <td>{{$row->created_at->format('d M Y')}}</td>
-                                    </tr>
-                            @endforeach
-                            
-                        @empty
-                            <td colspan="6">
-                                <span class="text-danger text-center fw-bold">
-                                    <p>No History Found!</p>
-                                </span>
-                            </td>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
     </div>
 </div>
 
