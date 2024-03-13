@@ -11,6 +11,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\VisitsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::resources([
     'jobs'          => JobsController::class,
     'engineers'     => EngineersController::class,
     'settings'      => SettingsController::class,
+    'visits'        => VisitsController::class,
 ]);
 
 Route::get('/machines/{id}/pretransfer', [MachinesController::class, 'pretransfer'])->name('machines.pretransfer');

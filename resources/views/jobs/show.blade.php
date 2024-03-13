@@ -97,7 +97,7 @@
                     Visits
                 </div>
                 <div class="float-end">
-                    <a href="#" class="btn btn-sm btn-success">Add Job</a>
+                    <!--<a href="#" class="btn btn-sm btn-success">Add </a>-->
                 </div>
             </div>
             <div class="card-body">

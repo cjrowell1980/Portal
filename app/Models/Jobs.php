@@ -48,4 +48,9 @@ class Jobs extends Model
         return $this->belongsTo(Status::class, 'status_4');
     }
 
+    public function getVisits()
+    {
+        return $this->hasMany(Visits::class, 'job');
+    }
+
 }

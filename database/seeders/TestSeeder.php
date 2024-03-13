@@ -7,6 +7,7 @@ use App\Models\Engineers;
 use App\Models\Jobs;
 use App\Models\Machines;
 use App\Models\Status;
+use App\Models\Visits;
 use Illuminate\Database\Seeder;
 
 class TestSeeder extends Seeder
@@ -41,7 +42,7 @@ class TestSeeder extends Seeder
             'yom'           => '2023',
             'customer'      => $customer->id,
         ]);
-        $job = Jobs::create([
+        $job1 = Jobs::create([
             'machine'       => $machine->id,
             'number'        => rand(10000, 99999),
             'fault'         => 'its proper broken!',
@@ -54,7 +55,25 @@ class TestSeeder extends Seeder
             'status_3'      => $status_3[0]->id,
             'status_4'      => $status_4[0]->id,
         ]);
-        $job = Jobs::create([
+        $visit1A = Visits::create([
+            'job'           => $job1->id,
+            'engineer'      => null,
+            'scheduled'     => null,
+            'attended'      => null,
+            'status'        => 1,
+            'report'        => null,
+            'outcome'       => 0,
+        ]);
+        $visit1B = Visits::create([
+            'job'           => $job1->id,
+            'engineer'      => $engineer->id,
+            'scheduled'     => '2023-03-01 08:00:00', // year month day hr min sec
+            'attended'      => now(),
+            'status'        => 1,
+            'report'        => 'Attended site, machine needs parts',
+            'outcome'       => 1,
+        ]);
+        $job2 = Jobs::create([
             'machine'       => $machine->id,
             'number'        => rand(10000, 99999),
             'fault'         => 'its proper fixed!',
@@ -66,6 +85,15 @@ class TestSeeder extends Seeder
             'status_2'      => $status_2[1]->id,
             'status_3'      => $status_3[1]->id,
             'status_4'      => $status_4[1]->id,
+        ]);
+        $visit2A = Visits::create([
+            'job'           => $job2->id,
+            'engineer'      => null,
+            'scheduled'     => null,
+            'attended'      => null,
+            'status'        => 1,
+            'report'        => null,
+            'outcome'       => 0,
         ]);
     }
 }

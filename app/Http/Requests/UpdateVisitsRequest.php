@@ -22,7 +22,12 @@ class UpdateVisitsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'job'       => 'required',
+            'engineer'  => 'nullable',
+            'scheduled' => 'nullable',
+            'attended'  => 'nullable',
+            'status'    => 'boolean|required',
+            'outcome'   => 'integer|required',
         ];
     }
 }

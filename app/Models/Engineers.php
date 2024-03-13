@@ -18,8 +18,8 @@ class Engineers extends Model
         'shipping',
     ];
 
-    public function getJobs()
+    public function getVisits()
     {
-        return $this->hasMany(Jobs::class, 'engineer');
+        return $this->hasMany(Visits::class, 'engineer');
     }
 }

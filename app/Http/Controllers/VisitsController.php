@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Visits;
 use App\Http\Requests\StoreVisitsRequest;
 use App\Http\Requests\UpdateVisitsRequest;
+use Illuminate\View\View;
 
 class VisitsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:create-visit|edit-visit|delete-visit', ['only' => ['index','show']]);
+        $this->middleware('permission:create-visit', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-visit', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-visit', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -35,9 +45,11 @@ class VisitsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Visits $visits)
+    public function show(Visits $visit): View
     {
-        //
+        return view('visits.show', [
+            'visit' => $visit,
+        ]);
     }
 
     /**
