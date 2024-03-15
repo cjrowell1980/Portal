@@ -109,37 +109,48 @@
                         <th scope="col" width="1%">#</th>
                         <th scope="col" width="100px">Opened</th>
                         <th scope="col" width="100px">Scheduled</th>
+                        <th scope="col">Outcome</th>
+                        <th scope="col">Status</th>
                         <th scope="col" width="75px" class="text-center">Days</th>
                         <th scope="col" width="250px">Action</th>
                     </thead>
                     <tbody>
+                        <?php $__empty_1 = true; $__currentLoopData = $visits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <tr>
-                                <td>1</td>
-                                <td>01 Mar 24</td>
-                                <td>04 Mar 24</td>
-                                <td><span class="badge rounded-pill bg-warning w-75">Open</span></td>
+                                <td><?php echo e($loop->iteration); ?></td>
+                                <td><?php echo e($row->created_at->format('d M Y, H:m')); ?></td>
                                 <td>
-                                    <form action="#" method="POST">
-                                        <?php echo csrf_field(); ?>
-                                        <?php echo method_field('DELETE'); ?>
-                                        <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
-                                        <?php if(1 == true): ?>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-jobs')): ?>
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                                
-                                            <?php endif; ?>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete-jobs')): ?>
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this machine?');"><i class="bi bi-trash"></i> Delete</button>
-                                            <?php endif; ?>
+                                    <?php if(empty(!$row->scheduled)): ?>
+                                        <?php echo e($row->scheduled); ?>
+
+                                    <?php endif; ?>
+                                </td>
+                                <td>outcome</td>
+                                <td>
+                                    <?php if($row->status): ?>
+                                        <span class="badge rounded-pill bg-warning w-75">Open</span>
+                                    <?php else: ?>
+                                        <span class="badge rounded-pill bg-success w-75">Closed</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>0</td>
+                                <td>
+                                    <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
+                                    <?php if($row->status): ?>
+                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-jobs')): ?>
+                                            <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                                
                                         <?php endif; ?>
+                                    <?php endif; ?>
                                     </form>
                                 </td>
                             </tr>
-                        <!-- empty -->
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <td colspan="6">
                             <span class="text-danger text-center fw-bold">
                                 <p>No Visits Found!</p>
                             </span>
                         </td>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

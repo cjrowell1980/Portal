@@ -106,37 +106,47 @@
                         <th scope="col" width="1%">#</th>
                         <th scope="col" width="100px">Opened</th>
                         <th scope="col" width="100px">Scheduled</th>
+                        <th scope="col">Outcome</th>
+                        <th scope="col">Status</th>
                         <th scope="col" width="75px" class="text-center">Days</th>
                         <th scope="col" width="250px">Action</th>
                     </thead>
                     <tbody>
+                        @forelse ($visits as $row)
                             <tr>
-                                <td>1</td>
-                                <td>01 Mar 24</td>
-                                <td>04 Mar 24</td>
-                                <td><span class="badge rounded-pill bg-warning w-75">Open</span></td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $row->created_at->format('d M Y, H:m') }}</td>
                                 <td>
-                                    <form action="#" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
-                                        @if (1 == true)
-                                            @can('edit-jobs')
-                                                <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                                
-                                            @endcan
-                                            @can('delete-jobs')
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this machine?');"><i class="bi bi-trash"></i> Delete</button>
-                                            @endcan
-                                        @endif
+                                    @empty(!$row->scheduled)
+                                        {{ $row->scheduled }}
+                                    @endif
+                                </td>
+                                <td>outcome</td>
+                                <td>
+                                    @if ($row->status)
+                                        <span class="badge rounded-pill bg-warning w-75">Open</span>
+                                    @else
+                                        <span class="badge rounded-pill bg-success w-75">Closed</span>
+                                    @endif
+                                </td>
+                                <td>0</td>
+                                <td>
+                                    <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
+                                    @if ($row->status)
+                                        @can('edit-jobs')
+                                            <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>                                                
+                                        @endcan
+                                    @endif
                                     </form>
                                 </td>
                             </tr>
-                        <!-- empty -->
+                        @empty
                         <td colspan="6">
                             <span class="text-danger text-center fw-bold">
                                 <p>No Visits Found!</p>
                             </span>
                         </td>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

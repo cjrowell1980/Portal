@@ -8,38 +8,27 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                <th scope="col" width="50px">#</th>
-                <th scope="col">Job No#</th>
+                <th scope="col" width="30px" class="text-center">#</th>
+                <th scope="col" width="80ox">Job No#</th>
                 <th scope="col">Machine</th>
                 <th scope="col">Fault</th>
-                <th scope="col" colspan="2">Status</th>
-                <th scope="col" width="250px">Action</th>
+                <th scope="col" width="50px" class="text-center">Days</th>
+                <th scope="col" width="170px" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $__empty_1 = true; $__currentLoopData = $jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr>
-                    <th scope="row"><?php echo e($loop->iteration); ?></th>
+                    <th scope="row" class="text-center"><?php echo e($loop->iteration); ?></th>
                     <td><?php echo e($row->number); ?></td>
-                    <td><?php echo e($row->getMachine->stock . " - " . $row->getMachine->make . ' ' . $row->getMachine->model); ?></td>
+                    <td><?php echo e($row->getMachine->stock . " - " . $row->getMachine->make . ' ' . $row->getMachine->model . ' (' . $row->getMachine->getCustomer->name); ?>)</td>
                     <td><?php echo e($row->fault); ?></td>
-                    <td>SubStatuses</td>
-                    <td>SubStatuses</td>
-                    <td class="float-center">
-                        <form action="<?php echo e(route('jobs.destroy', $row->id)); ?>" method="post">
-                            <?php echo csrf_field(); ?>
-                            <?php echo method_field('DELETE'); ?>
-
-                            <a href="<?php echo e(route('jobs.show', $row->id)); ?>" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
-
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-jobs')): ?>
-                                <a href="<?php echo e(route('jobs.edit', $row->id)); ?>" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
-                            <?php endif; ?>
-
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete-jobs')): ?>
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this jobs?');"><i class="bi bi-trash"></i> Delete</button>
-                            <?php endif; ?>
-                        </form>
+                    <td class="text-center"><?php echo e(now()->diffInDays($row->created_at)); ?></td>
+                    <td class="text-center">
+                        <a href="<?php echo e(route('jobs.show', $row->id)); ?>" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
+                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-jobs')): ?>
+                            <a href="<?php echo e(route('jobs.edit', $row->id)); ?>" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
+                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

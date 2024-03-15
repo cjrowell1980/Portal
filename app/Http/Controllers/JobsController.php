@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateJobsRequest;
 use App\Models\JobHistory;
 use App\Models\Machines;
 use App\Models\Settings;
+use App\Models\Visits;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -58,6 +59,7 @@ class JobsController extends Controller
             'status_3'  => Status::where('parent', 3)->orderBy('order', 'ASC')->get(),
             'status_2'  => Status::where('parent', 2)->orderBy('order', 'ASC')->get(),
             'status_4'  => Status::where('parent', 4)->orderBy('order', 'ASC')->get(),
+            'visits'    => Visits::where('job', $job->id)->orderBy('created_at', 'DESC')->get(),
         ]);
     }
 
