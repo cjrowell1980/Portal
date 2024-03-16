@@ -106,31 +106,45 @@
                         <th scope="col" width="1%">#</th>
                         <th scope="col" width="100px">Opened</th>
                         <th scope="col" width="100px">Scheduled</th>
-                        <th scope="col">Outcome</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" width="75px" class="text-center">Days</th>
-                        <th scope="col" width="250px">Action</th>
+                        <th scope="col">Report</th>
+                        <th scope="col" width="100px" class="text-center">Outcome</th>
+                        <th scope="col" width="100p" class="text-center">Status</th>
+                        <th scope="col" width="150px" class="text-center">Action</th>
                     </thead>
                     <tbody>
                         @forelse ($visits as $row)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $row->created_at->format('d M Y, H:m') }}</td>
+                                <td>{{ $row->created_at->format('d M Y') }}</td>
                                 <td>
                                     @empty(!$row->scheduled)
-                                        {{ $row->scheduled }}
+                                        {{ date('d M Y', strtotime($row->scheduled))     }}
                                     @endif
                                 </td>
-                                <td>outcome</td>
-                                <td>
+                                <td>{{ $row->report }}</td>
+                                <td class="text-center">
+                                    @switch($row->outcome)
+                                        @case(1)
+                                            <span class="badge rounded-pill bg-primary w-100">Scheduled</span>
+                                            @break
+                                        @case(2)
+                                            <span class="badge rounded-pill bg-warning w-100">Revisit Req</span>
+                                            @break
+                                        @case(3)
+                                            <span class="badge rounded-pill bg-success w-100">Complete</span>
+                                            @break
+                                        @default
+                                            <span class="badge rounded-pill bg-info w-100">Pending</span> 
+                                    @endswitch
+                                </td>
+                                <td class="text-center">
                                     @if ($row->status)
-                                        <span class="badge rounded-pill bg-warning w-75">Open</span>
+                                        <span class="badge rounded-pill bg-warning w-100">Open</span>
                                     @else
-                                        <span class="badge rounded-pill bg-success w-75">Closed</span>
+                                        <span class="badge rounded-pill bg-success w-100">Closed</span>
                                     @endif
                                 </td>
-                                <td>0</td>
-                                <td>
+                                <td class="text-center">
                                     <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
                                     @if ($row->status)
                                         @can('edit-jobs')

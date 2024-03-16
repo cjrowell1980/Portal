@@ -109,32 +109,46 @@
                         <th scope="col" width="1%">#</th>
                         <th scope="col" width="100px">Opened</th>
                         <th scope="col" width="100px">Scheduled</th>
-                        <th scope="col">Outcome</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" width="75px" class="text-center">Days</th>
-                        <th scope="col" width="250px">Action</th>
+                        <th scope="col">Report</th>
+                        <th scope="col" width="100px" class="text-center">Outcome</th>
+                        <th scope="col" width="100p" class="text-center">Status</th>
+                        <th scope="col" width="150px" class="text-center">Action</th>
                     </thead>
                     <tbody>
                         <?php $__empty_1 = true; $__currentLoopData = $visits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <tr>
                                 <td><?php echo e($loop->iteration); ?></td>
-                                <td><?php echo e($row->created_at->format('d M Y, H:m')); ?></td>
+                                <td><?php echo e($row->created_at->format('d M Y')); ?></td>
                                 <td>
                                     <?php if(empty(!$row->scheduled)): ?>
-                                        <?php echo e($row->scheduled); ?>
+                                        <?php echo e(date('d M Y', strtotime($row->scheduled))); ?>
 
                                     <?php endif; ?>
                                 </td>
-                                <td>outcome</td>
-                                <td>
+                                <td><?php echo e($row->report); ?></td>
+                                <td class="text-center">
+                                    <?php switch($row->outcome):
+                                        case (1): ?>
+                                            <span class="badge rounded-pill bg-primary w-100">Scheduled</span>
+                                            <?php break; ?>
+                                        <?php case (2): ?>
+                                            <span class="badge rounded-pill bg-warning w-100">Revisit Req</span>
+                                            <?php break; ?>
+                                        <?php case (3): ?>
+                                            <span class="badge rounded-pill bg-success w-100">Complete</span>
+                                            <?php break; ?>
+                                        <?php default: ?>
+                                            <span class="badge rounded-pill bg-info w-100">Pending</span> 
+                                    <?php endswitch; ?>
+                                </td>
+                                <td class="text-center">
                                     <?php if($row->status): ?>
-                                        <span class="badge rounded-pill bg-warning w-75">Open</span>
+                                        <span class="badge rounded-pill bg-warning w-100">Open</span>
                                     <?php else: ?>
-                                        <span class="badge rounded-pill bg-success w-75">Closed</span>
+                                        <span class="badge rounded-pill bg-success w-100">Closed</span>
                                     <?php endif; ?>
                                 </td>
-                                <td>0</td>
-                                <td>
+                                <td class="text-center">
                                     <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
                                     <?php if($row->status): ?>
                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-jobs')): ?>
